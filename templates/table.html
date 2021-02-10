@@ -1,0 +1,27 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>Время</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for time in range(schedule_keys[0:6]|length): %}
+    <tr>
+        <td>{{ schedule_keys[time] }}</td>
+        {% if schedule[schedule_keys[time]] == 'Записаться': %}
+        <td><a href="/add/{{patient}}/{{date}}/{{ schedule_keys[time] }}/{{doctor}}">{{ schedule[schedule_keys[time]] }}</a></td>
+        {% else %}
+        <td>{{ schedule[schedule_keys[time]] }}</td>
+        {% endif %}
+        <td>{{ schedule_keys[time + 6] }}</td>
+        {% if schedule[schedule_keys[time + 6]] == 'Записаться': %}
+        <td><a href="/add/{{patient}}/{{date}}/{{ schedule_keys[time + 6] }}/{{doctor}}">{{ schedule[schedule_keys[time + 6]] }}</a></td>
+        {% else %}
+        <td>{{ schedule[schedule_keys[time + 6]] }}</td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
